@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Companies</title>
+    </head>
+    <body>
+        <h1>Companies</h1>
+        <form action="/accounts/logout/" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Logout">
+        </form>
+        <form action="/companies/create" method="get">
+            <input type="submit" value="Create Company">
+        </form>
+        <form method="get">
+            {{ form }}
+            <input type="submit" value="Order">
+        </form>
+        {%for i in companies%}
+        <h2>{{ forloop.counter }}. </h2>
+        <h2>Company Name : <a href="/companies/{{i.id}}/"> {{i.company_name}}</h2></a>
+        <h3>Number of employees : {{i.number_of_employees}}</h3>
+        <h4>Description : {{i.description}}</h4>
+        {%endfor%}
+    </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Routes</title>
+    </head>
+    <body>
+        
+        {% block title %}{% endblock %}
+
+        {% block content %}
+        {% if user.is_authenticated %}
+            <h2>Hi {{ user.username }}!</h2>
+            <form action="/companies/" method="get">
+                <input type="submit" value="View Companies">
+            </form>
+            <form action="/accounts/logout/" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Logout">
+            </form>
+        {% else %}
+            <h2><p>You are not logged in</p></h2>
+            <form action="/accounts/login" method="get">
+                <input type="submit" value="Log In">
+            </form>
+        {% endif %}
+        {% endblock %}
+    </body>
+</html>

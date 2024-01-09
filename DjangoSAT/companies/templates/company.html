@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Company</title>
+    </head>
+    <body>
+        <form action="/accounts/logout/" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Logout">
+        </form>
+        <h2>Company Name: {{company.company_name}}</h2>
+        <h3>Number of employees: {{company.number_of_employees}}</h3>
+        <h3>Description: {{company.description}}</h3>
+        <form action="/companies/{{company.id}}/update" method="get">
+            <input type="submit" value="Update Company">
+        </form>
+        <form action="/companies/" method="get">
+            <input type="submit" value="Go Back To Companies">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Routes</title>
+    </head>
+    <body>
+        <form action="/accounts/logout/" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Logout">
+        </form>
+        <form method="POST">
+            {% csrf_token %}
+            <h2>Company Name: {{company.company_name}}</h2>
+            <h3>{{ form.as_p }}</h3>
+            <h3>Description: {{company.description}}</h3>
+            <button type="submit">Update Company</button>
+         </form>
+    </body>
+</html>
